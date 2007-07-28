@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.2 2007-07-28 20:46:05 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.3 2007-07-28 20:51:38 mayhewn Exp $
  *
  *	Given two township roads and perpendicular distances from them,
  *	calculate the corresponding point.
@@ -63,6 +63,11 @@ Vector rotate(Vector v) // 90 degrees CCW
 	return Vector(-v.y, v.x);
 }
 
+double operator * (Vector v, Vector w) // Dot product
+{
+	return v.x * w.x + v.y * w.y;
+}
+
 Line parallel(Line l, double distance) // The parallel line 'distance' away
 {
 	Vector direction = (l.second - l.first) / modulus(l.second - l.first);
@@ -73,16 +78,13 @@ Line parallel(Line l, double distance) // The parallel line 'distance' away
 Point intersect(Line l, Line m)
 {
 	Vector d = l.second - l.first;
-	Vector e = m.second - m.first;
-	Vector q = l.first - m.first;
-	double r = d.x * e.y - d.y * e.x;
+	Vector e = rotate(m.second - m.first);
+	Vector f = m.first - l.first;
 	
-	if (std::abs(r) < 1e-9)
+	if (std::fabs(d * e) < 1e-9)
 		throw std::runtime_error("intersecting parallel lines");
 
-	return Point(
-		(d.x * e.x * q.y - (d.y * e.x * l.first.x - d.x * e.y * m.first.x)) /  r,
-		(d.y * e.y * q.x - (d.x * e.y * l.first.y - d.y * e.x * m.first.y)) / -r);
+	return l.first + d * ((f * e) / (d * e));
 }
 
 // Problem - dh, dv are perpendicular distances from lines h, v respectively
