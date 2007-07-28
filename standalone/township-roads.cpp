@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.3 2007-07-28 20:51:38 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.4 2007-07-28 21:03:36 mayhewn Exp $
  *
  *	Given two township roads and perpendicular distances from them,
  *	calculate the corresponding point.
@@ -149,7 +149,68 @@ int main(int argc, char** argv)
 	Line v;	   arg[2] >> v;
 	double dv; arg[3] >> dv;
 
-	std::cout
+	std::cerr
 		<< "solve("<<h<<", "<<dh<<", "<<v<<", "<<dv<<"): "
 		<<  solve(h, dh, v, dv) << "\n";
+
+#if SVG
+	Line hp = parallel(h,  dh);
+	Line vp = parallel(v, -dv);
+	Point p = solve(h, dh, v, dv);
+
+	Line xaxis(Point(-2, 0), Point(10, 0));
+	Line yaxis(Point(0, -2), Point(0, 10));
+	Line left(Point(-2, -2), Point(-2, 10));
+	Line right(Point(10, -2), Point(10, 10));
+	Line bottom(Point(-2, -2), Point(10, -2));
+	Line top(Point(-2, 10), Point(10, 10));
+	Line hfull(intersect(h, left), intersect(h, right));
+	Line vfull(intersect(v, bottom), intersect(v, top));
+	Line hpfull(intersect(hp, left), intersect(hp, right));
+	Line vpfull(intersect(vp, bottom), intersect(vp, top));
+	Vector hdir = h.second - h.first;
+	Vector vdir = v.second - v.first;
+	Line hperp(p, p + rotate(hdir / modulus(hdir)) * -dh); 
+	Line vperp(p, p + rotate(vdir / modulus(vdir)) *  dv); 
+
+	std::cout <<
+"<?xml version='1.0' encoding='UTF-8'?>\n"
+"<svg xmlns='http://www.w3.org/2000/svg'\n"
+"   width='8in' height='8in'\n"
+"   viewBox='-2 -10 12 12'\n"
+"   overflow='hidden'>\n"
+"  <g stroke='#000000' stroke-width='0.05'>\n"
+"    <circle id='spot' fill='red' stroke='none'\n"
+"       cx='"<<p.x<<"' cy='"<<-p.y<<"' r='0.1'/>\n"
+"    <text id='label' font-size='0.25' stroke='none'\n"
+"       x='"<<p.x<<"' y='"<<-p.y<<"' dx='0.5'>\n"
+"      "<<p.x<<","<<p.y<<"\n"
+"    </text>\n"
+"    <line id='xaxis' stroke-width='0.01' stroke='#4444dd'\n"
+"       x1='"<<xaxis.first.x<<"' y1='"<<-xaxis.first.y<<"' x2='"<<xaxis.second.x<<"' y2='"<<-xaxis.second.y<<"'/>\n"
+"    <line id='yaxis' stroke-width='0.01' stroke='#4444dd'\n"
+"       x1='"<<yaxis.first.x<<"' y1='"<<-yaxis.first.y<<"' x2='"<<yaxis.second.x<<"' y2='"<<-yaxis.second.y<<"'/>\n"
+"    <line id='hfull' stroke-opacity='0.2'\n"
+"       x1='"<<hfull.first.x<<"' y1='"<<-hfull.first.y<<"' x2='"<<hfull.second.x<<"' y2='"<<-hfull.second.y<<"'/>\n"
+"    <line id='h'\n"
+"       x1='"<<h.first.x<<"' y1='"<<-h.first.y<<"' x2='"<<h.second.x<<"' y2='"<<-h.second.y<<"'/>\n"
+"    <line id='vfull' stroke-opacity='0.2'\n"
+"       x1='"<<vfull.first.x<<"' y1='"<<-vfull.first.y<<"' x2='"<<vfull.second.x<<"' y2='"<<-vfull.second.y<<"'/>\n"
+"    <line id='v'\n"
+"       x1='"<<v.first.x<<"' y1='"<<-v.first.y<<"' x2='"<<v.second.x<<"' y2='"<<-v.second.y<<"'/>\n"
+"    <line id='hpfull' stroke-opacity='0.2' stroke='#44dd44'\n"
+"       x1='"<<hpfull.first.x<<"' y1='"<<-hpfull.first.y<<"' x2='"<<hpfull.second.x<<"' y2='"<<-hpfull.second.y<<"'/>\n"
+"    <line id='hp' stroke='#44dd44'\n"
+"       x1='"<<hp.first.x<<"' y1='"<<-hp.first.y<<"' x2='"<<hp.second.x<<"' y2='"<<-hp.second.y<<"'/>\n"
+"    <line id='vpfull' stroke='#44dd44' stroke-opacity='0.2'\n"
+"       x1='"<<vpfull.first.x<<"' y1='"<<-vpfull.first.y<<"' x2='"<<vpfull.second.x<<"' y2='"<<-vpfull.second.y<<"'/>\n"
+"    <line id='vp' stroke='#44dd44'\n"
+"       x1='"<<vp.first.x<<"' y1='"<<-vp.first.y<<"' x2='"<<vp.second.x<<"' y2='"<<-vp.second.y<<"'/>\n"
+"    <line id='hperp' stroke-opacity='0.6' stroke-width='0.01'\n"
+"       x1='"<<hperp.first.x<<"' y1='"<<-hperp.first.y<<"' x2='"<<hperp.second.x<<"' y2='"<<-hperp.second.y<<"'/>\n"
+"    <line id='vperp' stroke-opacity='0.6' stroke-width='0.01'\n"
+"       x1='"<<vperp.first.x<<"' y1='"<<-vperp.first.y<<"' x2='"<<vperp.second.x<<"' y2='"<<-vperp.second.y<<"'/>\n"
+"  </g>\n"
+"</svg>\n";
+#endif //SVG
 }
