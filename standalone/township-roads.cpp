@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.4 2007-07-28 21:03:36 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.5 2007-07-29 23:44:54 mayhewn Exp $
  *
  *	Given two township roads and perpendicular distances from them,
  *	calculate the corresponding point.
@@ -139,8 +139,8 @@ int main(int argc, char** argv)
 	{
 		std::cerr
 			<< "Usage: "<<argv[0]<<" h dh v dv\n"
-			<< "   eg: "<<argv[0]<<" 1.1,-0.1:2.3,-0.2 3.2 -0.1,0.2:-0.5,9.7 1.8\n"
-			<< "       (should give: 1.58071,3.07103)\n";
+			<< "   eg: "<<argv[0]<<" 1.1,0.2:6.3,-0.8 6.1 -0.2,0.2:-0.5,9.3 5.8\n"
+			<< "       (should give: 5.42579,5.57989)\n";
 		return 1;
 	}
 
