@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.3 2007-11-09 05:23:13 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.4 2007-11-09 05:29:01 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
@@ -81,7 +81,7 @@ int main(int argc, char** argv)
 	<< "<?xml version='1.0' encoding='UTF-8'?>\n"
 	<< "<svg xmlns='http://www.w3.org/2000/svg'\n"
 	<< "   width='8in' height='8in'\n"
-	<< "   viewBox='-2 -10 12 12'\n"
+	<< "   viewBox='"<<min.x()<<" "<<-max.y()<<" "<<(max - min).x()<<" "<<(max - min).y()<<"'\n"
 	<< "   overflow='hidden'>\n"
 	<< "  <g stroke='#000000' stroke-width='0.05'>\n"
 	<< "    <circle id='spot' fill='red' stroke='none'\n"
