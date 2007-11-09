@@ -1,10 +1,13 @@
 /*
- *	$Id: point.hpp,v 1.1 2007-11-09 04:45:43 mayhewn Exp $
+ *	$Id: point.hpp,v 1.2 2007-11-09 05:03:27 mayhewn Exp $
  *
  *	2D Geometry
  *
- *	Neil Mayhew - 2007-07-26 - neil_mayhew@users.sourceforge.net
+ *	Neil Mayhew - 2007-11-08 - neil_mayhew@users.sourceforge.net
  */
+
+#ifndef GEOMETRY_HPP
+#define GEOMETRY_HPP
 
 #include <cmath>
 #include <stdexcept>
@@ -231,3 +234,4 @@ inline Point operator & (const Line& l, const Line& m)
 	return intersect(l, m);
 }
 
+#endif//GEOMETRY_HPP
