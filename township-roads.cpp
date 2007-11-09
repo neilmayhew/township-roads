@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.6 2007-11-09 06:05:31 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.7 2007-11-09 06:10:05 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
@@ -87,7 +87,7 @@ int main(int argc, char** argv)
 	<< "    <circle id='spot' fill='red' stroke='none'\n"
 	<< "       cx='"<<p.x()<<"' cy='"<<-p.y()<<"' r='0.1'/>\n"
 	<< "    <text id='label' font-size='0.25' font-weight='bold' stroke='none'\n"
-	<< "       x='"<<p.x()<<"' y='"<<-p.y()<<"' dx='0.5'>\n"
+	<< "       x='"<<p.x()<<"' y='"<<-p.y()<<"' dx='0.5' dy='-0.25'>\n"
 	<< "      "<<p.x()<<","<<p.y()<<"\n"
 	<< "    </text>\n"
 	<< svg(xaxis, "xaxis", "stroke-width='0.01' stroke='#4444dd'")
