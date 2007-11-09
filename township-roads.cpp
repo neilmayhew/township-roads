@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.2 2007-11-09 05:02:35 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.3 2007-11-09 05:23:13 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
@@ -24,6 +24,7 @@ inline Point solve(const Line& h, double dh, const Line& v, double dv)
 }
 
 std::string svg(const Line& l, std::string id, std::string attrs = std::string());
+std::string itoa(int);
 
 int main(int argc, char** argv)
 {
@@ -90,7 +91,28 @@ int main(int argc, char** argv)
 	<< "      "<<p.x()<<","<<p.y()<<"\n"
 	<< "    </text>\n"
 	<< svg(xaxis, "xaxis", "stroke-width='0.01' stroke='#4444dd'")
-	<< svg(yaxis, "yaxis", "stroke-width='0.01' stroke='#4444dd'")
+	<< svg(yaxis, "yaxis", "stroke-width='0.01' stroke='#4444dd'");
+	
+	int count = 0;
+	for (double x = min.x() + 1.0; x < max.x(); x += 1.0)
+	{
+		if (x == 0.0)
+			continue;
+		Line tick(Point(x, -0.1), Point(x, 0.1));
+		std::cout << svg(tick, "tick" + itoa(++count),
+			"stroke-width='0.01' stroke='#4444dd'");
+	}
+	
+	for (double y = min.y() + 1.0; y < max.y(); y += 1.0)
+	{
+		if (y == 0.0)
+			continue;
+		Line tick(Point(-0.1, y), Point(0.1, y));
+		std::cout << svg(tick, "tick" + itoa(++count),
+			"stroke-width='0.01' stroke='#4444dd'");
+	}
+
+	std::cout
 	<< svg(hfull, "hfull", "stroke-opacity='0.2'")
 	<< svg(vfull, "vfull", "stroke-opacity='0.2'")
 	<< svg(hpfull, "hpfull", "stroke-opacity='0.2' stroke='#44dd44'")
@@ -113,5 +135,10 @@ std::string svg(const Line& l, std::string id, std::string attrs)
 "    <line id='"<<id<<"'"<<(attrs.size()?" ":"")<<attrs<<"\n"
 "       x1='"<<l.first().x()<<"' y1='"<<-l.first().y()<<"' x2='"<<l.second().x()<<"' y2='"<<-l.second().y()<<"'/>\n";
 	return s.str();
+}
+
+std::string itoa(int i)
+{
+	std::ostringstream s; s << i; return s.str();
 }
 
