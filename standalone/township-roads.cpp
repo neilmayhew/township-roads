@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.5 2007-07-29 23:44:54 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.6 2007-11-09 04:44:46 mayhewn Exp $
  *
  *	Given two township roads and perpendicular distances from them,
  *	calculate the corresponding point.
@@ -192,18 +192,18 @@ int main(int argc, char** argv)
 "       x1='"<<yaxis.first.x<<"' y1='"<<-yaxis.first.y<<"' x2='"<<yaxis.second.x<<"' y2='"<<-yaxis.second.y<<"'/>\n"
 "    <line id='hfull' stroke-opacity='0.2'\n"
 "       x1='"<<hfull.first.x<<"' y1='"<<-hfull.first.y<<"' x2='"<<hfull.second.x<<"' y2='"<<-hfull.second.y<<"'/>\n"
-"    <line id='h'\n"
-"       x1='"<<h.first.x<<"' y1='"<<-h.first.y<<"' x2='"<<h.second.x<<"' y2='"<<-h.second.y<<"'/>\n"
 "    <line id='vfull' stroke-opacity='0.2'\n"
 "       x1='"<<vfull.first.x<<"' y1='"<<-vfull.first.y<<"' x2='"<<vfull.second.x<<"' y2='"<<-vfull.second.y<<"'/>\n"
-"    <line id='v'\n"
-"       x1='"<<v.first.x<<"' y1='"<<-v.first.y<<"' x2='"<<v.second.x<<"' y2='"<<-v.second.y<<"'/>\n"
 "    <line id='hpfull' stroke-opacity='0.2' stroke='#44dd44'\n"
 "       x1='"<<hpfull.first.x<<"' y1='"<<-hpfull.first.y<<"' x2='"<<hpfull.second.x<<"' y2='"<<-hpfull.second.y<<"'/>\n"
+"    <line id='vpfull' stroke-opacity='0.2' stroke='#44dd44'\n"
+"       x1='"<<vpfull.first.x<<"' y1='"<<-vpfull.first.y<<"' x2='"<<vpfull.second.x<<"' y2='"<<-vpfull.second.y<<"'/>\n"
+"    <line id='h'\n"
+"       x1='"<<h.first.x<<"' y1='"<<-h.first.y<<"' x2='"<<h.second.x<<"' y2='"<<-h.second.y<<"'/>\n"
+"    <line id='v'\n"
+"       x1='"<<v.first.x<<"' y1='"<<-v.first.y<<"' x2='"<<v.second.x<<"' y2='"<<-v.second.y<<"'/>\n"
 "    <line id='hp' stroke='#44dd44'\n"
 "       x1='"<<hp.first.x<<"' y1='"<<-hp.first.y<<"' x2='"<<hp.second.x<<"' y2='"<<-hp.second.y<<"'/>\n"
-"    <line id='vpfull' stroke='#44dd44' stroke-opacity='0.2'\n"
-"       x1='"<<vpfull.first.x<<"' y1='"<<-vpfull.first.y<<"' x2='"<<vpfull.second.x<<"' y2='"<<-vpfull.second.y<<"'/>\n"
 "    <line id='vp' stroke='#44dd44'\n"
 "       x1='"<<vp.first.x<<"' y1='"<<-vp.first.y<<"' x2='"<<vp.second.x<<"' y2='"<<-vp.second.y<<"'/>\n"
 "    <line id='hperp' stroke-opacity='0.6' stroke-width='0.01'\n"
