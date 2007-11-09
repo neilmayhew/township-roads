@@ -1,22 +1,25 @@
 
-#	$Id: Makefile,v 1.1 2007-07-29 23:03:26 mayhewn Exp $
+#	$Id: Makefile,v 1.2 2007-11-09 05:02:09 mayhewn Exp $
 #
-#	Makefile for township-roads program
+#	Makefile for township-roads programs
 #
 #	Neil Mayhew - 2007-07-29
 
-CPPFLAGS = -DSVG
+CPPFLAGS = -DSVG -MMD
 CXXFLAGS = -g -O3
 
 .DELETE_ON_ERROR:
 
-all: township-roads
+all: township-roads geometry
 
-test: township-roads.svg
+test: township-roads.svg geometry.svg
 
-township-roads.svg: township-roads
-	./township-roads 1.1,0.2:6.3,-0.8 6.1 -0.2,0.2:-0.5,9.3 5.8 >$@
+%.svg: %
+	./$< 1.1,0.2:6.3,-0.8 6.1 -0.2,0.2:-0.5,9.3 5.8 >$@
 
 clean:
-	$(RM) township-roads township-roads.svg *.[od]
+	$(RM) township-roads township-roads.svg
+	$(RM) geometry geometry.svg
+	$(RM) *.[od]
 
+-include *.d
