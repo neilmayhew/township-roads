@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.4 2007-11-09 05:29:01 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.5 2007-11-09 05:33:33 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
@@ -117,12 +117,12 @@ int main(int argc, char** argv)
 	<< svg(vfull, "vfull", "stroke-opacity='0.2'")
 	<< svg(hpfull, "hpfull", "stroke-opacity='0.2' stroke='#44dd44'")
 	<< svg(vpfull, "vpfull", "stroke-opacity='0.2' stroke='#44dd44'")
+	<< svg(hperp, "hperp", "stroke-opacity='0.6' stroke-width='0.01'")
+	<< svg(vperp, "vperp", "stroke-opacity='0.6' stroke-width='0.01'")
 	<< svg(h, "h")
 	<< svg(v, "v")
 	<< svg(hp, "hp", "stroke='#44dd44'")
 	<< svg(vp, "vp", "stroke='#44dd44'")
-	<< svg(hperp, "hperp", "stroke-opacity='0.6' stroke-width='0.01'")
-	<< svg(vperp, "vperp", "stroke-opacity='0.6' stroke-width='0.01'")
 	<< "  </g>\n"
 	<< "</svg>\n";
 #endif //SVG
