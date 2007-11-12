@@ -1,5 +1,5 @@
 /*
- *	$Id: point.hpp,v 1.7 2007-11-12 00:24:54 mayhewn Exp $
+ *	$Id: point.hpp,v 1.8 2007-11-12 00:27:46 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -80,6 +80,11 @@ namespace geometry2d
 	inline double modulus(const Vector& v)
 	{
 		return v.modulus();
+	}
+
+	inline Vector normalize(const Vector& v)
+	{
+		return v / v.modulus();
 	}
 
 	inline Vector rotate(const Vector& v) // 1/4 turn CCW
@@ -221,7 +226,7 @@ namespace geometry2d
 	inline Line parallel(const Line& l, double distance) // The parallel line 'distance' away
 	{
 		Vector direction = l;
-		Vector offset = rotate(direction) / modulus(direction) * distance;
+		Vector offset = normalize(rotate(direction)) * distance;
 		return l + offset;
 	}
 
