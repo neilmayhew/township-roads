@@ -1,5 +1,5 @@
 /*
- *	$Id: line.hpp,v 1.8 2007-11-12 00:27:46 mayhewn Exp $
+ *	$Id: line.hpp,v 1.9 2007-11-12 00:33:24 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -225,9 +225,7 @@ namespace geometry2d
 
 	inline Line parallel(const Line& l, double distance) // The parallel line 'distance' away
 	{
-		Vector direction = l;
-		Vector offset = normalize(rotate(direction)) * distance;
-		return l + offset;
+		return l + normalize(rotate(l)) * distance;;
 	}
 
 	inline Line operator || (const Line& l, double d)
