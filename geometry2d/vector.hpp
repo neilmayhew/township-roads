@@ -1,5 +1,5 @@
 /*
- *	$Id: vector.hpp,v 1.6 2007-11-12 00:21:40 mayhewn Exp $
+ *	$Id: vector.hpp,v 1.7 2007-11-12 00:24:54 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -154,6 +154,11 @@ namespace geometry2d
 			first_ += v; second_ += v; return *this;
 		}
 
+		Line& operator -= (const Vector& v)
+		{
+			first_ -= v; second_ -= v; return *this;
+		}
+
 		operator Vector() const
 		{
 			return second_ - first_;
@@ -163,6 +168,11 @@ namespace geometry2d
 	inline Line operator + (const Line& l, const Vector& v)
 	{
 		return Line(l) += v;
+	}
+
+	inline Line operator - (const Line& l, const Vector& v)
+	{
+		return Line(l) -= v;
 	}
 
 	// Stream i/o of Points and Lines - format is x1,y1:x2,y2
