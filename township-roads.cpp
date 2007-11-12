@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.8 2007-11-12 00:16:12 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.9 2007-11-12 00:36:30 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
@@ -28,7 +28,14 @@ inline Point solve(const Line& h, double dh, const Line& v, double dv)
 }
 
 std::string svg(const Line& l, std::string id, std::string attrs = std::string());
-std::string itoa(int);
+
+template<typename T>
+std::string toString(T t)
+{
+	std::ostringstream s; s << t; return s.str();
+}
+
+
 
 int main(int argc, char** argv)
 {
@@ -103,7 +110,7 @@ int main(int argc, char** argv)
 		if (x == 0.0)
 			continue;
 		Line tick(Point(x, -0.1), Point(x, 0.1));
-		std::cout << svg(tick, "tick" + itoa(++count),
+		std::cout << svg(tick, "tick" + toString(++count),
 			"stroke-width='0.01' stroke='#4444dd'");
 	}
 	
@@ -112,7 +119,7 @@ int main(int argc, char** argv)
 		if (y == 0.0)
 			continue;
 		Line tick(Point(-0.1, y), Point(0.1, y));
-		std::cout << svg(tick, "tick" + itoa(++count),
+		std::cout << svg(tick, "tick" + toString(++count),
 			"stroke-width='0.01' stroke='#4444dd'");
 	}
 
@@ -140,9 +147,3 @@ std::string svg(const Line& l, std::string id, std::string attrs)
 "       x1='"<<l.first().x()<<"' y1='"<<-l.first().y()<<"' x2='"<<l.second().x()<<"' y2='"<<-l.second().y()<<"'/>\n";
 	return s.str();
 }
-
-std::string itoa(int i)
-{
-	std::ostringstream s; s << i; return s.str();
-}
-
