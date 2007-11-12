@@ -1,5 +1,5 @@
 /*
- *	$Id: streamio.hpp,v 1.2 2007-11-09 05:03:27 mayhewn Exp $
+ *	$Id: streamio.hpp,v 1.3 2007-11-12 00:10:03 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -97,21 +97,23 @@ inline double operator * (const Vector& v, const Vector& w) // Dot product
 
 class Point
 {
-	Vector offset_;
+	Vector displacement_;
 public:
 	explicit Point(double x = 0, double y = 0)
-		: offset_(x, y) {}
+		: displacement_(x, y) {}
 
-	double x() const { return offset_.x(); }
-	double y() const { return offset_.y(); }
+	double x() const { return displacement_.x(); }
+	double y() const { return displacement_.y(); }
+	
+	const Vector& displacement() const { return displacement_; }
 
 	Point& operator += (const Vector& v)
 	{
-		offset_ += v; return *this;
+		displacement_ += v; return *this;
 	}
 	Point& operator -= (const Vector& v)
 	{
-		offset_ -= v; return *this;
+		displacement_ -= v; return *this;
 	}
 	
 	friend const Vector operator - (const Point&, const Point&);
@@ -129,7 +131,7 @@ inline const Point operator - (const Point& p, const Vector& v)
 
 inline const Vector operator - (const Point& p, const Point& q)
 {
-	return p.offset_ - q.offset_;
+	return p.displacement_ - q.displacement_;
 }
 
 class Line
