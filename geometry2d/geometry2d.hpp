@@ -1,5 +1,5 @@
 /*
- *	$Id: geometry2d.hpp,v 1.5 2007-11-12 00:17:11 mayhewn Exp $
+ *	$Id: geometry2d.hpp,v 1.6 2007-11-12 00:21:40 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -59,22 +59,22 @@ namespace geometry2d
 
 	inline const Vector operator + (const Vector& v, const Vector& w)
 	{
-		Vector temp(v); temp += w; return temp;
+		return Vector(v) += w;
 	}
 
 	inline const Vector operator - (const Vector& v, const Vector& w)
 	{
-		Vector temp(v); temp -= w; return temp;
+		return Vector(v) -= w;
 	}
 
 	inline const Vector operator * (const Vector& v, double s)
 	{
-		Vector temp(v); temp *= s; return temp;
+		return Vector(v) *= s;
 	}
 
 	inline const Vector operator / (const Vector& v, double s)
 	{
-		Vector temp(v); temp /= s; return temp;
+		return Vector(v) /= s;
 	}
 
 	inline double modulus(const Vector& v)
@@ -162,7 +162,7 @@ namespace geometry2d
 
 	inline Line operator + (const Line& l, const Vector& v)
 	{
-		Line temp(l); temp += v; return temp;
+		return Line(l) += v;
 	}
 
 	// Stream i/o of Points and Lines - format is x1,y1:x2,y2
