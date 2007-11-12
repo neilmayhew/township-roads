@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.9 2007-11-12 00:36:30 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.10 2007-11-12 00:42:46 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
@@ -82,11 +82,8 @@ int main(int argc, char** argv)
 	Line hpfull(hp & left, hp & right);
 	Line vpfull(vp & bottom, vp & top);
 
-	Vector hdir = h;
-	Vector vdir = v;
-
-	Line hperp(p, p + rotate(hdir / modulus(hdir)) * -dh); 
-	Line vperp(p, p + rotate(vdir / modulus(vdir)) *  dv); 
+	Line hperp(p - normalize(rotate(h)) *  dh, p); 
+	Line vperp(p - normalize(rotate(v)) * -dv, p); 
 
 	std::cout
 	<< "<?xml version='1.0' encoding='UTF-8'?>\n"
