@@ -1,5 +1,5 @@
 /*
- *	$Id: vector.hpp,v 1.4 2007-11-12 00:16:12 mayhewn Exp $
+ *	$Id: vector.hpp,v 1.5 2007-11-12 00:17:11 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -16,228 +16,226 @@
 
 namespace geometry2d
 {
-
-class Vector
-{
-	double x_, y_;
-public:
-	explicit Vector(double x = 0, double y = 0)
-		: x_(x), y_(y) {}
-
-	double x() const { return x_; }
-	double y() const { return y_; }
-	
-	Vector& operator += (const Vector& other)
+	class Vector
 	{
-		x_ += other.x_; y_ += other.y_; return *this;
-	}
-	Vector& operator -= (const Vector& other)
+		double x_, y_;
+	public:
+		explicit Vector(double x = 0, double y = 0)
+			: x_(x), y_(y) {}
+
+		double x() const { return x_; }
+		double y() const { return y_; }
+
+		Vector& operator += (const Vector& other)
+		{
+			x_ += other.x_; y_ += other.y_; return *this;
+		}
+		Vector& operator -= (const Vector& other)
+		{
+			x_ -= other.x_; y_ -= other.y_; return *this;
+		}
+		Vector& operator *= (double scalar)
+		{
+			x_ *= scalar; y_ *= scalar; return *this;
+		}
+		Vector& operator /= (double scalar)
+		{
+			x_ /= scalar; y_ /= scalar; return *this;
+		}
+
+		double modulus() const
+		{
+			return std::sqrt(x_ * x_ + y_ * y_);
+		}
+		double length() const
+		{
+			return modulus();
+		}
+		operator double() const
+		{
+			return modulus();
+		}
+	};
+
+	inline const Vector operator + (const Vector& v, const Vector& w)
 	{
-		x_ -= other.x_; y_ -= other.y_; return *this;
+		Vector temp(v); temp += w; return temp;
 	}
-	Vector& operator *= (double scalar)
+
+	inline const Vector operator - (const Vector& v, const Vector& w)
 	{
-		x_ *= scalar; y_ *= scalar; return *this;
+		Vector temp(v); temp -= w; return temp;
 	}
-	Vector& operator /= (double scalar)
+
+	inline const Vector operator * (const Vector& v, double s)
 	{
-		x_ /= scalar; y_ /= scalar; return *this;
+		Vector temp(v); temp *= s; return temp;
 	}
-	
-	double modulus() const
+
+	inline const Vector operator / (const Vector& v, double s)
 	{
-		return std::sqrt(x_ * x_ + y_ * y_);
+		Vector temp(v); temp /= s; return temp;
 	}
-	double length() const
+
+	inline double modulus(const Vector& v)
 	{
-		return modulus();
+		return v.modulus();
 	}
-	operator double() const
+
+	inline Vector rotate(const Vector& v) // 1/4 turn CCW
 	{
-		return modulus();
+		return Vector(-v.y(), v.x());
 	}
-};
 
-inline const Vector operator + (const Vector& v, const Vector& w)
-{
-	Vector temp(v); temp += w; return temp;
-}
-
-inline const Vector operator - (const Vector& v, const Vector& w)
-{
-	Vector temp(v); temp -= w; return temp;
-}
-
-inline const Vector operator * (const Vector& v, double s)
-{
-	Vector temp(v); temp *= s; return temp;
-}
-
-inline const Vector operator / (const Vector& v, double s)
-{
-	Vector temp(v); temp /= s; return temp;
-}
-
-inline double modulus(const Vector& v)
-{
-	return v.modulus();
-}
-
-inline Vector rotate(const Vector& v) // 1/4 turn CCW
-{
-	return Vector(-v.y(), v.x());
-}
-
-inline Vector rotate(const Vector& v, double angle) // Radians CCW
-{
-	double c = std::cos(angle);
-	double s = std::sin(angle);
-	return Vector(c * v.x() - s * v.y(), s * v.x() + c * v.y());
-}
-
-inline double operator * (const Vector& v, const Vector& w) // Dot product
-{
-	return v.x() * w.x() + v.y() * w.y();
-}
-
-class Point
-{
-	Vector displacement_;
-public:
-	explicit Point(double x = 0, double y = 0)
-		: displacement_(x, y) {}
-
-	double x() const { return displacement_.x(); }
-	double y() const { return displacement_.y(); }
-	
-	const Vector& displacement() const { return displacement_; }
-
-	Point& operator += (const Vector& v)
+	inline Vector rotate(const Vector& v, double angle) // Radians CCW
 	{
-		displacement_ += v; return *this;
+		double c = std::cos(angle);
+		double s = std::sin(angle);
+		return Vector(c * v.x() - s * v.y(), s * v.x() + c * v.y());
 	}
-	Point& operator -= (const Vector& v)
+
+	inline double operator * (const Vector& v, const Vector& w) // Dot product
 	{
-		displacement_ -= v; return *this;
+		return v.x() * w.x() + v.y() * w.y();
 	}
-	
-	friend const Vector operator - (const Point&, const Point&);
-};
 
-inline const Point operator + (const Point& p, const Vector& v)
-{
-	return Point(p) += v;
-}
-
-inline const Point operator - (const Point& p, const Vector& v)
-{
-	return Point(p) -= v;
-}
-
-inline const Vector operator - (const Point& p, const Point& q)
-{
-	return p.displacement_ - q.displacement_;
-}
-
-class Line
-{
-	Point first_, second_;
-public:
-	Line(Point f, Point s)
-		: first_(f), second_(s) {}
-	Line() {}
-
-	Point first()  const { return first_; }
-	Point second() const { return second_; }
-
-	Line& operator += (const Vector& v)
+	class Point
 	{
-		first_ += v; second_ += v; return *this;
-	}
-	
-	operator Vector() const
+		Vector displacement_;
+	public:
+		explicit Point(double x = 0, double y = 0)
+			: displacement_(x, y) {}
+
+		double x() const { return displacement_.x(); }
+		double y() const { return displacement_.y(); }
+
+		const Vector& displacement() const { return displacement_; }
+
+		Point& operator += (const Vector& v)
+		{
+			displacement_ += v; return *this;
+		}
+		Point& operator -= (const Vector& v)
+		{
+			displacement_ -= v; return *this;
+		}
+
+		friend const Vector operator - (const Point&, const Point&);
+	};
+
+	inline const Point operator + (const Point& p, const Vector& v)
 	{
-		return second_ - first_;
+		return Point(p) += v;
 	}
-};
 
-inline Line operator + (const Line& l, const Vector& v)
-{
-	Line temp(l); temp += v; return temp;
-}
+	inline const Point operator - (const Point& p, const Vector& v)
+	{
+		return Point(p) -= v;
+	}
 
-// Stream i/o of Points and Lines - format is x1,y1:x2,y2
+	inline const Vector operator - (const Point& p, const Point& q)
+	{
+		return p.displacement_ - q.displacement_;
+	}
 
-inline std::ostream& operator << (std::ostream& s, const Vector& v)
-{
-	return s << v.x() << ',' << v.y();
-}
+	class Line
+	{
+		Point first_, second_;
+	public:
+		Line(Point f, Point s)
+			: first_(f), second_(s) {}
+		Line() {}
 
-inline std::ostream& operator << (std::ostream& s, const Point& p)
-{
-	return s << p.x() << ',' << p.y();
-}
+		Point first()  const { return first_; }
+		Point second() const { return second_; }
 
-inline std::ostream& operator << (std::ostream& s, const Line& l)
-{
-	return s << l.first() << ':' << l.second();
-}
+		Line& operator += (const Vector& v)
+		{
+			first_ += v; second_ += v; return *this;
+		}
 
-inline std::istream& operator >> (std::istream& s, Vector& v)
-{
-	double x, y; char c;
-	if (s >> x >> c >> y) // We don't check c
-		v = Vector(x, y);
-	return s;
-}
+		operator Vector() const
+		{
+			return second_ - first_;
+		}
+	};
 
-inline std::istream& operator >> (std::istream& s, Point& p)
-{
-	Vector v;
-	if (s >> v)
-		p = Point() + v;
-	return s;
-}
+	inline Line operator + (const Line& l, const Vector& v)
+	{
+		Line temp(l); temp += v; return temp;
+	}
 
-inline std::istream& operator >> (std::istream& s, Line& l)
-{
-	Point first, second; char c;
-	if (s >> first >> c >> second) // We don't check c
-		l = Line(first, second);
-	return s;
-}
+	// Stream i/o of Points and Lines - format is x1,y1:x2,y2
 
-// Computations
+	inline std::ostream& operator << (std::ostream& s, const Vector& v)
+	{
+		return s << v.x() << ',' << v.y();
+	}
 
-inline Line parallel(const Line& l, double distance) // The parallel line 'distance' away
-{
-	Vector direction = l;
-	Vector offset = rotate(direction) / modulus(direction) * distance;
-	return l + offset;
-}
+	inline std::ostream& operator << (std::ostream& s, const Point& p)
+	{
+		return s << p.x() << ',' << p.y();
+	}
 
-inline Line operator || (const Line& l, double d)
-{
-	return parallel(l, d);
-}
+	inline std::ostream& operator << (std::ostream& s, const Line& l)
+	{
+		return s << l.first() << ':' << l.second();
+	}
 
-inline Point intersect(const Line& l, const Line& m)
-{
-	Vector d = l;
-	Vector e = rotate(m);
-	Vector f = m.first() - l.first();
+	inline std::istream& operator >> (std::istream& s, Vector& v)
+	{
+		double x, y; char c;
+		if (s >> x >> c >> y) // We don't check c
+			v = Vector(x, y);
+		return s;
+	}
 
-	if (std::fabs(d * e) < 1e-9)
-		throw std::runtime_error("trying to intersect parallel lines");
+	inline std::istream& operator >> (std::istream& s, Point& p)
+	{
+		Vector v;
+		if (s >> v)
+			p = Point() + v;
+		return s;
+	}
 
-	return l.first() + d * ((f * e) / (d * e));
-}
+	inline std::istream& operator >> (std::istream& s, Line& l)
+	{
+		Point first, second; char c;
+		if (s >> first >> c >> second) // We don't check c
+			l = Line(first, second);
+		return s;
+	}
 
-inline Point operator & (const Line& l, const Line& m)
-{
-	return intersect(l, m);
-}
+	// Computations
 
+	inline Line parallel(const Line& l, double distance) // The parallel line 'distance' away
+	{
+		Vector direction = l;
+		Vector offset = rotate(direction) / modulus(direction) * distance;
+		return l + offset;
+	}
+
+	inline Line operator || (const Line& l, double d)
+	{
+		return parallel(l, d);
+	}
+
+	inline Point intersect(const Line& l, const Line& m)
+	{
+		Vector d = l;
+		Vector e = rotate(m);
+		Vector f = m.first() - l.first();
+
+		if (std::fabs(d * e) < 1e-9)
+			throw std::runtime_error("trying to intersect parallel lines");
+
+		return l.first() + d * ((f * e) / (d * e));
+	}
+
+	inline Point operator & (const Line& l, const Line& m)
+	{
+		return intersect(l, m);
+	}
 }
 
 #endif//GEOMETRY_HPP
