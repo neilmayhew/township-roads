@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.7 2007-11-09 06:10:05 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.8 2007-11-12 00:16:12 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
@@ -13,6 +13,10 @@
 #include <cassert>
 #include <iostream>
 #include <string>
+
+using geometry2d::Point;
+using geometry2d::Line;
+using geometry2d::Vector;
 
 // Problem - dh, dv are perpendicular distances from lines h, v respectively
 

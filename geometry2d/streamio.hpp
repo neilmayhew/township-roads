@@ -1,5 +1,5 @@
 /*
- *	$Id: streamio.hpp,v 1.3 2007-11-12 00:10:03 mayhewn Exp $
+ *	$Id: streamio.hpp,v 1.4 2007-11-12 00:16:12 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -11,6 +11,11 @@
 
 #include <cmath>
 #include <stdexcept>
+#include <istream>
+#include <ostream>
+
+namespace geometry2d
+{
 
 class Vector
 {
@@ -163,9 +168,6 @@ inline Line operator + (const Line& l, const Vector& v)
 
 // Stream i/o of Points and Lines - format is x1,y1:x2,y2
 
-#include <ostream>
-#include <istream>
-
 inline std::ostream& operator << (std::ostream& s, const Vector& v)
 {
 	return s << v.x() << ',' << v.y();
@@ -234,6 +236,8 @@ inline Point intersect(const Line& l, const Line& m)
 inline Point operator & (const Line& l, const Line& m)
 {
 	return intersect(l, m);
+}
+
 }
 
 #endif//GEOMETRY_HPP
