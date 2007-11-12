@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg'
+   width='8in' height='8in'
+   viewBox='-2 -10 12 12'
+   overflow='hidden'>
+  <g stroke='#000000' stroke-width='0.05'>
+    <circle id='spot' fill='red' stroke='none'
+       cx='5.42579' cy='-5.57989' r='0.1'/>
+    <text id='label' font-size='0.25' font-weight='bold' stroke='none'
+       x='5.42579' y='-5.57989' dx='0.5' dy='-0.25'>
+      5.42579,5.57989
+    </text>
+    <line id='xaxis' stroke-width='0.01' stroke='#4444dd'
+       x1='-2' y1='-0' x2='10' y2='-0'/>
+    <line id='yaxis' stroke-width='0.01' stroke='#4444dd'
+       x1='0' y1='2' x2='0' y2='-10'/>
+    <line id='tick1' stroke-width='0.01' stroke='#4444dd'
+       x1='-1' y1='0.1' x2='-1' y2='-0.1'/>
+    <line id='tick2' stroke-width='0.01' stroke='#4444dd'
+       x1='1' y1='0.1' x2='1' y2='-0.1'/>
+    <line id='tick3' stroke-width='0.01' stroke='#4444dd'
+       x1='2' y1='0.1' x2='2' y2='-0.1'/>
+    <line id='tick4' stroke-width='0.01' stroke='#4444dd'
+       x1='3' y1='0.1' x2='3' y2='-0.1'/>
+    <line id='tick5' stroke-width='0.01' stroke='#4444dd'
+       x1='4' y1='0.1' x2='4' y2='-0.1'/>
+    <line id='tick6' stroke-width='0.01' stroke='#4444dd'
+       x1='5' y1='0.1' x2='5' y2='-0.1'/>
+    <line id='tick7' stroke-width='0.01' stroke='#4444dd'
+       x1='6' y1='0.1' x2='6' y2='-0.1'/>
+    <line id='tick8' stroke-width='0.01' stroke='#4444dd'
+       x1='7' y1='0.1' x2='7' y2='-0.1'/>
+    <line id='tick9' stroke-width='0.01' stroke='#4444dd'
+       x1='8' y1='0.1' x2='8' y2='-0.1'/>
+    <line id='tick10' stroke-width='0.01' stroke='#4444dd'
+       x1='9' y1='0.1' x2='9' y2='-0.1'/>
+    <line id='tick11' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='1' x2='0.1' y2='1'/>
+    <line id='tick12' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-1' x2='0.1' y2='-1'/>
+    <line id='tick13' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-2' x2='0.1' y2='-2'/>
+    <line id='tick14' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-3' x2='0.1' y2='-3'/>
+    <line id='tick15' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-4' x2='0.1' y2='-4'/>
+    <line id='tick16' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-5' x2='0.1' y2='-5'/>
+    <line id='tick17' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-6' x2='0.1' y2='-6'/>
+    <line id='tick18' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-7' x2='0.1' y2='-7'/>
+    <line id='tick19' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-8' x2='0.1' y2='-8'/>
+    <line id='tick20' stroke-width='0.01' stroke='#4444dd'
+       x1='-0.1' y1='-9' x2='0.1' y2='-9'/>
+    <line id='hfull' stroke-opacity='0.2'
+       x1='-2' y1='-0.796154' x2='10' y2='1.51154'/>
+    <line id='vfull' stroke-opacity='0.2'
+       x1='-0.127473' y1='2' x2='-0.523077' y2='-10'/>
+    <line id='hpfull' stroke-opacity='0.2' stroke='#44dd44'
+       x1='-2' y1='-7.00793' x2='10' y2='-4.70023'/>
+    <line id='vpfull' stroke-opacity='0.2' stroke='#44dd44'
+       x1='5.67568' y1='2' x2='5.28007' y2='-10'/>
+    <line id='hperp' stroke-opacity='0.6' stroke-width='0.01'
+       x1='5.42579' y1='-5.57989' x2='4.27382' y2='0.410351'/>
+    <line id='vperp' stroke-opacity='0.6' stroke-width='0.01'
+       x1='5.42579' y1='-5.57989' x2='-0.371059' y2='-5.38878'/>
+    <line id='h'
+       x1='1.1' y1='-0.2' x2='6.3' y2='0.8'/>
+    <line id='v'
+       x1='-0.2' y1='-0.2' x2='-0.5' y2='-9.3'/>
+    <line id='hp' stroke='#44dd44'
+       x1='2.25197' y1='-6.19024' x2='7.45197' y2='-5.19024'/>
+    <line id='vp' stroke='#44dd44'
+       x1='5.59685' y1='-0.391105' x2='5.29685' y2='-9.4911'/>
+  </g>
+</svg>
