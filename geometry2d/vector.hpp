@@ -1,5 +1,5 @@
 /*
- *	$Id: vector.hpp,v 1.10 2007-11-13 00:30:58 mayhewn Exp $
+ *	$Id: vector.hpp,v 1.11 2007-11-13 00:33:15 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -238,14 +238,14 @@ namespace geometry2d
 
 	// Computations
 
-	inline Line parallel(const Line& l, double distance) // The parallel line 'distance' away
+	inline Line offset(const Line& l, double distance) // The parallel line 'distance' away
 	{
 		return l + normalize(rotate(l)) * distance;;
 	}
 
-	inline Line operator || (const Line& l, double d)
+	inline Line operator || (const Line& l, double d) // Looks like parallel lines
 	{
-		return parallel(l, d);
+		return offset(l, d);
 	}
 
 	inline Point intersect(const Line& l, const Line& m)
