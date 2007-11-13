@@ -1,5 +1,5 @@
 /*
- *	$Id: point.hpp,v 1.9 2007-11-12 00:33:24 mayhewn Exp $
+ *	$Id: point.hpp,v 1.10 2007-11-13 00:30:58 mayhewn Exp $
  *
  *	2D Geometry
  *
@@ -99,9 +99,24 @@ namespace geometry2d
 		return Vector(c * v.x() - s * v.y(), s * v.x() + c * v.y());
 	}
 
-	inline double operator * (const Vector& v, const Vector& w) // Dot product
+	inline double dot(const Vector& v, const Vector& w) // Dot product
 	{
 		return v.x() * w.x() + v.y() * w.y();
+	}
+
+	inline double operator * (const Vector& v, const Vector& w)
+	{
+		return dot(v, w);
+	}
+
+	inline double cross(const Vector& v, const Vector& w) // Cross or vector product
+	{
+		return v.x() * w.y() - v.y() * w.x(); // Same as dot(rotate(v), w)
+	}
+
+	inline double operator ^ (const Vector& v, const Vector& w)
+	{
+		return cross(v, w);
 	}
 
 	class Point
