@@ -1,5 +1,5 @@
 /*
- *	$Id: township-roads.cpp,v 1.10 2007-11-12 00:42:46 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.11 2007-11-13 00:36:14 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
@@ -28,14 +28,7 @@ inline Point solve(const Line& h, double dh, const Line& v, double dv)
 }
 
 std::string svg(const Line& l, std::string id, std::string attrs = std::string());
-
-template<typename T>
-std::string toString(T t)
-{
-	std::ostringstream s; s << t; return s.str();
-}
-
-
+template<typename T> std::string toString(T t);
 
 int main(int argc, char** argv)
 {
@@ -143,4 +136,10 @@ std::string svg(const Line& l, std::string id, std::string attrs)
 "    <line id='"<<id<<"'"<<(attrs.size()?" ":"")<<attrs<<"\n"
 "       x1='"<<l.first().x()<<"' y1='"<<-l.first().y()<<"' x2='"<<l.second().x()<<"' y2='"<<-l.second().y()<<"'/>\n";
 	return s.str();
+}
+
+template<typename T>
+std::string toString(T t)
+{
+	std::ostringstream s; s << t; return s.str();
 }
