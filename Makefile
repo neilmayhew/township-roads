@@ -1,5 +1,5 @@
 
-#	$Id: Makefile,v 1.4 2007-11-16 05:34:37 mayhewn Exp $
+#	$Id: Makefile,v 1.5 2007-11-16 05:42:00 mayhewn Exp $
 #
 #	Makefile for township-roads programs
 #
@@ -10,9 +10,10 @@ CXXFLAGS = -g -O3
 
 .DELETE_ON_ERROR:
 
-all: township-roads geometry
+all: township-roads
 
-test: township-roads.svg geometry.svg
+test: township-roads.svg
+	diff regression.svg $<
 
 %: %.cpp
 	$(LINK.cc) $< $(LOADLIBES) $(LDLIBS) -o $@
@@ -22,7 +23,6 @@ test: township-roads.svg geometry.svg
 
 clean:
 	$(RM) township-roads township-roads.svg
-	$(RM) geometry geometry.svg
 	$(RM) *.[od]
 
 -include *.d
