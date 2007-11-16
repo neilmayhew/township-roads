@@ -1,12 +1,12 @@
 /*
- *	$Id: township-roads.cpp,v 1.11 2007-11-13 00:36:14 mayhewn Exp $
+ *	$Id: township-roads.cpp,v 1.12 2007-11-16 05:34:37 mayhewn Exp $
  *
  *	Test for 2D Geometry - township-roads problem
  *
  *	Neil Mayhew - 2007-11-08 - neil_mayhew@users.sourceforge.net
  */
 
-#include "geometry.hpp"
+#include <geometry2d/geometry2d.hpp>
 
 #include <sstream>
 #include <vector>

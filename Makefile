@@ -1,11 +1,11 @@
 
-#	$Id: Makefile,v 1.3 2007-11-09 05:22:40 mayhewn Exp $
+#	$Id: Makefile,v 1.4 2007-11-16 05:34:37 mayhewn Exp $
 #
 #	Makefile for township-roads programs
 #
 #	Neil Mayhew - 2007-07-29
 
-CPPFLAGS = -DSVG -MMD
+CPPFLAGS = -DSVG -MMD -I.
 CXXFLAGS = -g -O3
 
 .DELETE_ON_ERROR:
