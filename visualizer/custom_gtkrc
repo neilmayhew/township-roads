@@ -1,0 +1,7 @@
+style "scale"
+{
+	gtkmm__CustomObject_roadswidget::example_scale = 1000
+}
+
+class "gtkmm__CustomObject_roadswidget" style "scale"
+
