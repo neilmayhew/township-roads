@@ -5,7 +5,7 @@
  *
  *	Neil Mayhew - 2007-12-08
  *
- *	$Id: roadswindow.cc,v 1.2 2007-12-10 01:50:44 mayhewn Exp $
+ *	$Id: roadswindow.cc,v 1.3 2008-04-05 15:56:07 mayhewn Exp $
  */
 
 #include "roadswindow.h"
@@ -14,7 +14,7 @@ RoadsWindow::RoadsWindow() :
 	m_Button_Quit("Quit")
 {
 	set_title("Township Roads Visualizer");
-	set_default_size(300, 200);
+	set_default_size(600, 600);
 
 	add(m_VBox);
 	

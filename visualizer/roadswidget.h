@@ -5,35 +5,26 @@
  *
  *	Neil Mayhew - 2007-12-08
  *
- *	$Id: roadswidget.h,v 1.2 2007-12-10 03:27:45 mayhewn Exp $
+ *	$Id: roadswidget.h,v 1.3 2008-04-05 15:56:07 mayhewn Exp $
  */
 
 #ifndef ROADSWIDGET_H
 #define ROADSWIDGET_H
 
-#include <gtkmm/widget.h>
-
+#include "drawingwidget.h"
 #include "geometry2d/line.hpp"
 
-class RoadsWidget : public Gtk::Widget
+class RoadsWidget : public DrawingWidget
 {
 public:
 	RoadsWidget();
 protected:
-	virtual void on_size_request(Gtk::Requisition* requisition);
-	virtual void on_size_allocate(Gtk::Allocation& allocation);
-	virtual void on_realize();
-	virtual void on_unrealize();
-	virtual bool on_expose_event(GdkEventExpose* event);
-
-	Glib::RefPtr<Gdk::Window> m_refGdkWindow;
-
 	geometry2d::Line h_;
 	double dh_;
 	geometry2d::Line v_;
 	double dv_;
 
-	void drawRoads(Cairo::RefPtr<Cairo::Context> cr);
+	void draw(Cairo::RefPtr<Cairo::Context>);
 };
 
 #endif //ROADSWIDGET_H
