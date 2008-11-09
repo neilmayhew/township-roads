@@ -5,13 +5,15 @@
  *
  *	Neil Mayhew - 2008-04-05
  *
- *	$Id: drawingwidget.cc,v 1.1 2008-04-05 15:56:07 mayhewn Exp $
+ *	$Id: drawingwidget.cc,v 1.2 2008-11-09 03:27:53 mayhewn Exp $
  */
 
 #include "drawingwidget.h"
 
 #include <gdkmm/drawable.h>
 #include <gdkmm/general.h>
+
+#include <cstring>
 
 DrawingWidget::DrawingWidget(int w, int h) :
 	Glib::ObjectBase("drawingwidget"),
@@ -50,7 +52,7 @@ void DrawingWidget::on_realize()
 		// Create the GdkWindow:
 
 		GdkWindowAttr attributes;
-		memset(&attributes, 0, sizeof(attributes));
+		std::memset(&attributes, 0, sizeof(attributes));
 
 		Gtk::Allocation allocation = get_allocation();
 
