@@ -30,7 +30,7 @@ A line is given as two colon-separated points, and points are given as two comma
 
 An example of the SVG output is given above.
 
-There's also a graphical program called `visualizer` that displays the illustration in a window. Currently it doesn't take command line arguments to define the problem parameters, but this is planned as a future enhancement. A further enhancement will be to allow direct manipulation of the parameters by dragging lines.
+There's also a GTK-based graphical program called `visualizer` that displays the illustration in a window. Currently it doesn't take command line arguments to define the problem parameters, but this is planned as a future enhancement. A further enhancement will be to allow direct manipulation of the parameters by dragging lines.
 
 ## The Code
 
@@ -56,4 +56,16 @@ The graphical program (`visualizer`) depends on `gtkmm-2`. It uses an autotools 
 autoreconf -if
 ./configure
 make
+```
+
+The `visualizer` directory also has Nix files, so a shell with dependencies can be started with:
+
+```shell
+nix develop -f shell.nix
+```
+
+Alternatively, a copy of `visualizer` can be built using
+
+```shell
+nix build -f shell.nix
 ```
