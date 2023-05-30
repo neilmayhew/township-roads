@@ -1,3 +1,5 @@
+![c-cpp.yml](https://github.com/neilmayhew/township-roads/actions/workflows/c-cpp.yml/badge.svg)
+
 # township-roads
 
 A solver for the township-roads geometry problem.
