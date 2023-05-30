@@ -12,7 +12,7 @@ CXXFLAGS = -g -O3
 
 all: township-roads
 
-test: township-roads.svg
+check: township-roads.svg
 	diff regression.svg $<
 
 %: %.cpp

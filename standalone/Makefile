@@ -12,7 +12,7 @@ CXXFLAGS = -g -O3
 
 all: township-roads
 
-test: township-roads.svg
+check: township-roads.svg
 
 township-roads.svg: township-roads
 	./township-roads 1.1,0.2:6.3,-0.8 6.1 -0.2,0.2:-0.5,9.3 5.8 >$@
