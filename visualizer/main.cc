@@ -13,7 +13,8 @@
 
 int main(int argc, char *argv[])
 {
-  Gtk::Main kit(argc, argv);
+  Glib::OptionContext opts;
+  Gtk::Main kit(argc, argv, opts);
 
   RoadsWindow window;
   Gtk::Main::run(window);
