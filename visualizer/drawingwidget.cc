@@ -20,7 +20,7 @@ DrawingWidget::DrawingWidget(int w, int h) :
 	m_preferred_width(w),
 	m_preferred_height(h)
 {
-	set_flags(Gtk::NO_WINDOW);
+	set_has_window(false);
 }
 
 void DrawingWidget::on_size_request(Gtk::Requisition* requisition)
@@ -67,7 +67,7 @@ void DrawingWidget::on_realize()
 		attributes.wclass = GDK_INPUT_OUTPUT;
 
 		m_refGdkWindow = Gdk::Window::create(get_window(), &attributes, GDK_WA_X|GDK_WA_Y);
-		unset_flags(Gtk::NO_WINDOW);
+		set_has_window(true);
 		set_window(m_refGdkWindow);
 
 		// make the widget receive expose events
