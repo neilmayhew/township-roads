@@ -1,0 +1,36 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-cli:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
+    - name: make check
+      run: make check
+
+  build-gtk:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Dependencies
+      run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libgtkmm-2.4-dev
+    - name: autoreconf
+      run: cd visualizer && autoreconf -if
+    - name: configure
+      run: cd visualizer && ./configure
+    - name: make
+      run: cd visualizer && make
+    - name: Smoke Test
+      run: cd visualizer && ./visualizer --help
