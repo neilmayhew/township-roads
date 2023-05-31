@@ -1,4 +1,4 @@
-AC_INIT([visualizer], [0.1], [neil_mayhew@users.sourceforge.net])
+AC_INIT([visualizer], [0.2], [neil_mayhew@users.sourceforge.net])
 
 AM_INIT_AUTOMAKE(foreign)
 AM_MAINTAINER_MODE

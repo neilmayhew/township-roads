@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
   pname = "visualizer";
-  version = "0.1";
+  version = "0.2";
 
   src = lib.cleanSource ../.;
   sourceRoot = "source/visualizer";
