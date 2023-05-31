@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Dependencies
-      run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libgtkmm-2.4-dev
+      run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libgtkmm-3.0-dev
     - name: autoreconf
       run: cd visualizer && autoreconf -if
     - name: configure

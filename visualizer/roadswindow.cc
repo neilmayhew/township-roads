@@ -14,7 +14,7 @@ RoadsWindow::RoadsWindow() :
 	m_Button_Quit("Quit")
 {
 	set_title("Township Roads Visualizer");
-	set_default_size(600, 600);
+	set_default_size(600, 650);
 
 	add(m_VBox);
 	

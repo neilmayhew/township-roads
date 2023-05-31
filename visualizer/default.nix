@@ -1,4 +1,4 @@
-{ stdenv, lib, autoreconfHook, pkg-config, gtkmm2 }:
+{ stdenv, lib, autoreconfHook, pkg-config, gtkmm3 }:
 
 stdenv.mkDerivation {
   pname = "visualizer";
@@ -8,6 +8,6 @@ stdenv.mkDerivation {
   sourceRoot = "source/visualizer";
 
   buildInputs = [
-    autoreconfHook pkg-config gtkmm2
+    autoreconfHook pkg-config gtkmm3
   ];
 }

@@ -10,7 +10,7 @@
 
 #include "roadswidget.h"
 
-#include <gdkmm/drawable.h>
+#include <gdkmm/window.h>
 #include <gdkmm/general.h>
 
 #include <iostream>
@@ -20,13 +20,14 @@
 
 using namespace geometry2d;
 
-RoadsWidget::RoadsWidget() :
-	DrawingWidget(500, 500)
+RoadsWidget::RoadsWidget()
 {
 	h_ = Line(Point( 1.1,0.2), Point( 6.3,-0.8));
 	dh_ = 6.1;
 	v_ = Line(Point(-0.2,0.2), Point(-0.5, 9.3));
 	dv_ = 5.8;
+
+	set_size_request(500, 500);
 }
 
 // Problem - dh, dv are perpendicular distances from lines h, v respectively
@@ -46,7 +47,7 @@ Cairo::RefPtr<Cairo::Context> operator<<(Cairo::RefPtr<Cairo::Context> cr, const
 	return cr;
 }
 
-void RoadsWidget::draw(Cairo::RefPtr<Cairo::Context> cr)
+bool RoadsWidget::on_draw(const Cairo::RefPtr<Cairo::Context>& cr)
 {
 	// Paint the background
 	cr->set_source_rgb(1.0, 1.0, 1.0);
@@ -141,4 +142,6 @@ void RoadsWidget::draw(Cairo::RefPtr<Cairo::Context> cr)
 	cr->set_line_width(0.1);
 	cr << hp;
 	cr << vp;
+
+	return true;
 }

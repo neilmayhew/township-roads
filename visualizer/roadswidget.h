@@ -11,10 +11,10 @@
 #ifndef ROADSWIDGET_H
 #define ROADSWIDGET_H
 
-#include "drawingwidget.h"
+#include <gtkmm/drawingarea.h>
 #include "geometry2d/line.hpp"
 
-class RoadsWidget : public DrawingWidget
+class RoadsWidget : public Gtk::DrawingArea
 {
 public:
 	RoadsWidget();
@@ -24,7 +24,7 @@ protected:
 	geometry2d::Line v_;
 	double dv_;
 
-	void draw(Cairo::RefPtr<Cairo::Context>);
+	bool on_draw(const Cairo::RefPtr<Cairo::Context>& cr);
 };
 
 #endif //ROADSWIDGET_H
